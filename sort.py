@@ -48,9 +48,20 @@ def quickSort(nums):  # 这种写法的平均空间复杂度为 O(nlogn)
     return quickSort(left) +[p] +quickSort(right)
 
 
+def countSort(a):
+    bucket=[0] * (max(a)+1)
+    for num in a:
+        bucket[num] += 1
+    b = []
+    for i in range(len(bucket)):
+        while bucket[i] > 0:
+            b.append(i)
+            bucket[i]-=1
+    return b
+
 def main():
     a = [1,23,4,563,3,5,23,43,54,28]
-    print(quickSort(a))
+    print(countSort(a))
 
 
 if __name__ == '__main__':
